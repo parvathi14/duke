@@ -9,29 +9,29 @@ public class Duke {
         System.out.println("Hello!, I'm Duke \n" +
                 "What can I do for you?");
 
-        List<String> list = new ArrayList<String>();
+        List<Task> myTasks = new ArrayList<>();
 
         while(input.hasNextLine()) {
             //System.out.println(input.nextLine());
             String s = new String(input.nextLine());
+            String[] arrOfStr = s.split(" ", 2);
+
             if(s.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
             } else if (s.equals("list")) {
-                for (int n = 0; n != list.size(); n += 1) {
-                    System.out.println((n + 1) + ". " + list.get(n));
+                System.out.println("Here are the tasks in your list:");
+                for (int n = 0; n != myTasks.size(); n += 1) {
+                    System.out.println((n + 1) + ". [" + myTasks.get(n).getStatusIcon() + "] " + myTasks.get(n).description);
                 }
+            } else if (arrOfStr[0].equals("done")) {
+                int element = Integer.parseInt(arrOfStr[1]) - 1;
+                myTasks.get(element).markAsDone();
+                System.out.println("Nice! I've marked this task as done: \n" + "   [" + myTasks.get(element).getStatusIcon() + "] " + myTasks.get(element).description);
             } else {
+                Task t = new Task(s);
+                myTasks.add(t);
                 System.out.println("added: " + s);
-                list.add(s);
             }
         }
     }
-    /*public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-    }*/
 }
