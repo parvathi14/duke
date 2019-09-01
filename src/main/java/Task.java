@@ -1,10 +1,10 @@
 public class Task {
     protected String description;
     protected boolean isDone;
-    protected char typeOfTask;
+    // protected char typeOfTask;
 
-    public Task(char typeOfTask, String description) {
-        this.typeOfTask = typeOfTask;
+    public Task(String description) {
+        // this.typeOfTask = typeOfTask;
         this.description = description;
         this.isDone = false;
     }
@@ -15,5 +15,9 @@ public class Task {
 
     public void markAsDone() {
         this.isDone = true;
+    }
+
+    public String toString() {
+        return "[" + this.getStatusIcon() + "] " + this.description;
     }
 }
