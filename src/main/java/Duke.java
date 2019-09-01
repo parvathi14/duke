@@ -12,23 +12,30 @@ public class Duke {
         List<Task> myTasks = new ArrayList<>();
 
         while(input.hasNextLine()) {
-            String s = new String(input.nextLine());
-            String[] arrOfStr = s.split(" ", 2);
+            //String s = new String(input.nextLine());
+            //String[] arrOfStr = s.split(" ", 2);
 
-            if(s.equals("bye")) {
+            String line = new String(input.nextLine());
+
+            if (line.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
                 break;
-            } else if (s.equals("list")) {
+            } else if (line.equals("list")) {
                 System.out.println("Here are the tasks in your list:");
                 for (int n = 0; n != myTasks.size(); n += 1) {
                     System.out.println((n + 1) + ". " + myTasks.get(n).toString());
                 }
-            } else if (arrOfStr[0].equals("done")) {
-                int element = Integer.parseInt(arrOfStr[1]) - 1;
-                myTasks.get(element).markAsDone();
-                System.out.println("Nice! I've marked this task as done: \n" + myTasks.get(element).toString());
-            } else {
-                if (arrOfStr[0].equals("todo")) {
+                continue;
+            }
+
+            try {
+                String[] arrOfStr = line.split(" ", 2);
+                if (arrOfStr[0].equals("done")) {
+                    int element = Integer.parseInt(arrOfStr[1]) - 1;
+                    myTasks.get(element).markAsDone();
+                    System.out.println("Nice! I've marked this task as done: \n" + myTasks.get(element).toString());
+                    continue;
+                } else if (arrOfStr[0].equals("todo")) {
                     Task t = new Todo(arrOfStr[1]);
 
                     myTasks.add(t);
@@ -50,7 +57,13 @@ public class Duke {
                     myTasks.add(t);
                     System.out.println("Got it. I've added this task: \n" + t.toString() +
                             "\n" + "Now you have " + myTasks.size() + " tasks in the list.");
+                } else {
+                    DukeException error = new DukeException(arrOfStr[0]);
+                    error.toPrint();
                 }
+            } catch (Exception e) {
+                DukeException error = new DukeException(line);
+                error.toPrint();
             }
         }
     }
