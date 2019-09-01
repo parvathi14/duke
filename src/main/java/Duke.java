@@ -4,7 +4,7 @@ public class Duke {
     public static void main (String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Hello!, I'm Duke \n" +
+        System.out.println("Hello!, I'm Duke \n" +
                 "What can I do for you?");
 
         while(input.hasNextLine()) {
