@@ -1,15 +1,45 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
 public class Duke {
-    public static void main (String[] args) {
+    public static void main (String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
+        List<Task> myTasks = new ArrayList<>();
+        saveToFile trial = new saveToFile();
+
+        File file = new File("C:\\Users\\parva\\Desktop\\Level 7 - Save.txt");
+        //System.out.println(file.length());
+        readFromFile read = new readFromFile();
+
+        List existingList = read.readByJava8("C:\\Users\\parva\\Desktop\\Level 7 - Save.txt");
+        /*System.out.println(existingList.size());
+        String str = (String) existingList.get(0);
+        if (str == "") {
+            System.out.println("ok");
+        }*/
+
+        if (file.length() != 3) {
+            for (int n = 0; n != existingList.size(); n += 1) {
+                //System.out.println((n + 1) + ". " + existingList.get(n));
+                String newInput = (String) existingList.get(n);
+                String[] existingTasks = newInput.split("\\[", 3);
+                String[] existingDescription = existingTasks[2].split(" ", 2);
+
+                Task t = new existingFile(existingDescription[1], existingTasks[1].charAt(0));
+                myTasks.add(t);
+
+                if (existingTasks[2].charAt(0) == '\u2713') {
+                    t.markAsDone();
+                    //myTasks.get(n).markAsDone();
+                }
+            }
+        }
 
         System.out.println("Hello!, I'm Duke \n" +
                 "What can I do for you?");
-
-        List<Task> myTasks = new ArrayList<>();
 
         while(input.hasNextLine()) {
             //String s = new String(input.nextLine());
@@ -34,7 +64,7 @@ public class Duke {
                     int element = Integer.parseInt(arrOfStr[1]) - 1;
                     myTasks.get(element).markAsDone();
                     System.out.println("Nice! I've marked this task as done: \n" + myTasks.get(element).toString());
-                    continue;
+                    //continue;
                 } else if (arrOfStr[0].equals("todo")) {
                     Task t = new Todo(arrOfStr[1]);
 
@@ -65,6 +95,7 @@ public class Duke {
                 DukeException error = new DukeException(line);
                 error.toPrint();
             }
+            trial.test(args, myTasks);
         }
     }
 }
