@@ -13,6 +13,8 @@ public class Duke {
         File file = new File("C:\\Users\\parva\\Desktop\\Level 7 - Save.txt");
         //System.out.println(file.length());
         readFromFile read = new readFromFile();
+        DateTime dateAndTime = new DateTime();
+        //dateAndTime.date(args,"07/06/2019");
 
         List existingList = read.readByJava8("C:\\Users\\parva\\Desktop\\Level 7 - Save.txt");
         /*System.out.println(existingList.size());
@@ -72,17 +74,19 @@ public class Duke {
                     System.out.println("Got it. I've added this task: \n" + t.toString() +
                             "\n" + "Now you have " + myTasks.size() + " tasks in the list.");
                 } else if (arrOfStr[0].equals("deadline")) {
-                    String[] deadline = arrOfStr[1].split("/", 2);
-                    String[] date = deadline[1].split(" ", 2);
-                    Task t = new Deadline(deadline[0], date[1]);
+                    String[] deadline = arrOfStr[1].split("/", 2); // could split by '/by '?
+                    String[] date = deadline[1].split(" ", 3);
+                    String formattedDate = dateAndTime.test(date[1], date[2]);
+                    Task t = new Deadline(deadline[0], formattedDate);
 
                     myTasks.add(t);
                     System.out.println("Got it. I've added this task: \n" + t.toString() +
                             "\n" + "Now you have " + myTasks.size() + " tasks in the list.");
                 } else if (arrOfStr[0].equals("event")) {
                     String[] event = arrOfStr[1].split("/", 2);
-                    String[] time = event[1].split(" ", 2);
-                    Task t = new Event(event[0], time[1]);
+                    String[] time = event[1].split(" ", 3);
+                    String formattedDate = dateAndTime.test(time[1], time[2]);
+                    Task t = new Event(event[0], formattedDate);
 
                     myTasks.add(t);
                     System.out.println("Got it. I've added this task: \n" + t.toString() +
