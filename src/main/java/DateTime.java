@@ -13,7 +13,7 @@ import java.util.Date;
 
 public class DateTime {
 
-    public static String test(String inputDate, String time) {
+    public static String test(String inputDate, String time, String actual) {
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String dateInString = inputDate;
@@ -41,7 +41,8 @@ public class DateTime {
             ans = ordinalDate + " of " + month + " " + year + ", " + _12HourSDF.format(_24HourDt);
 
         } catch (ParseException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            ans = actual;
         }
         return ans;
     }
