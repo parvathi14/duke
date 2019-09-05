@@ -17,11 +17,7 @@ public class Duke {
         //dateAndTime.date(args,"07/06/2019");
 
         List existingList = read.readByJava8("C:\\Users\\parva\\Desktop\\Level 7 - Save.txt");
-        /*System.out.println(existingList.size());
-        String str = (String) existingList.get(0);
-        if (str == "") {
-            System.out.println("ok");
-        }*/
+
 
         if (file.length() != 3) {
             for (int n = 0; n != existingList.size(); n += 1) {
@@ -67,6 +63,19 @@ public class Duke {
                     myTasks.get(element).markAsDone();
                     System.out.println("Nice! I've marked this task as done: \n" + myTasks.get(element).toString());
                     //continue;
+                } else if (arrOfStr[0].equals("find")) {
+                    int count = 0;
+                    for (int n = 0; n != myTasks.size(); n += 1) {
+                        String search = myTasks.get(n).toString();
+                        if (search.contains(arrOfStr[1])) {
+                            if (count == 0) {System.out.println("Here are the matching tasks in your list:");}
+                            count += 1;
+                            System.out.println(count + ". " + myTasks.get(n).toString());
+                        }
+                    }
+                    if (count == 0) {
+                        System.out.println("Sorry, no matches were found");
+                    }
                 } else if (arrOfStr[0].equals("todo")) {
                     Task t = new Todo(arrOfStr[1]);
 
