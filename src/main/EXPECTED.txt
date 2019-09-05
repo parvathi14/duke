@@ -1,0 +1,10 @@
+Hello!, I'm Duke 
+What can I do for you?
+
+Here are the tasks in your list:
+1. [T][?] read book
+2. [T][?] go to supermarket
+3. [E][?] meeting  (at: null)
+4. [D][?] retun book  (by: 2nd of December 2019, 06:00 PM)
+5. [T][?] return book
+6. [T][?] visit bank
