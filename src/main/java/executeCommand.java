@@ -22,6 +22,11 @@ public class executeCommand {
                 int element = Integer.parseInt(arrOfStr[1]) - 1;
                 myTasks.get(element).markAsDone();
                 System.out.println("Nice! I've marked this task as done: \n" + myTasks.get(element).toString());
+            } else if (arrOfStr[0].equals("delete")) {
+                int element = Integer.parseInt(arrOfStr[1]) - 1;
+                System.out.println("Noted. I've removed this task: \n" + myTasks.get(element).toString()
+                        + "\n" + "Now you have " + (myTasks.size()-1) + " tasks in the list.");
+                myTasks.remove(element);
             } else if (arrOfStr[0].equals("find")) {
                 int count = 0;
                 for (int n = 0; n != myTasks.size(); n += 1) {
@@ -44,7 +49,7 @@ public class executeCommand {
             } else if (arrOfStr[0].equals("deadline")) {
                 String[] deadline = arrOfStr[1].split("/", 2); // could split by '/by '?
                 String[] date = deadline[1].split(" ", 3);
-                String formattedDate = dateAndTime.test(date[1], date[2]);
+                String formattedDate = dateAndTime.test(date[1], date[2], deadline[1]);
                 Task t = new Deadline(deadline[0], formattedDate);
 
                 myTasks.add(t);
@@ -53,7 +58,7 @@ public class executeCommand {
             } else if (arrOfStr[0].equals("event")) {
                 String[] event = arrOfStr[1].split("/", 2);
                 String[] time = event[1].split(" ", 3);
-                String formattedDate = dateAndTime.test(time[1], time[2]);
+                String formattedDate = dateAndTime.test(time[1], time[2], event[1]);
                 Task t = new Event(event[0], formattedDate);
 
                 myTasks.add(t);
