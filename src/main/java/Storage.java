@@ -1,3 +1,7 @@
+/**
+ * Loads the existing list in the file saved on the hard disk every time Duke starts up.
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +11,12 @@ public class Storage {
     private File file;
     private List existingList;
     private List<Task> myTasks;
+
+    /**
+     * Reads file saved on hard disk
+     * @param filePath location of file on hard disk
+     */
+
     public Storage(String filePath) {
         this.file = new File(filePath);
         readFromFile read = new readFromFile();
@@ -19,6 +29,10 @@ public class Storage {
         this.myTasks = new ArrayList<>();
     }
 
+    /**
+     * Loads data from saved file
+     * @return list created from existing data on the file
+     */
     public List<Task> load() {
         if (file.length() != 3) {
             for (int n = 0; n != existingList.size(); n += 1) {

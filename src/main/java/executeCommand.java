@@ -1,3 +1,7 @@
+/**
+ * Reads the input from user and executes the corresponding commands.
+ */
+
 import java.util.List;
 
 public class executeCommand {
@@ -73,6 +77,11 @@ public class executeCommand {
             error.toPrint();
         }
     }
+
+    /**
+     * Returns boolean variable indicating whether Duke should continue running or not.
+     * @return status of Duke run
+     */
 
     public static boolean result() {
         return ans;

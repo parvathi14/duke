@@ -1,6 +1,11 @@
-/*
-    Took reference from: https://www.mkyong.com/java/java-how-to-read-a-file-into-a-list/
+/**
+ * Reads the list from the file saved on the hard disk.
  */
+
+// @@author parvathi14-reused
+// Reused from: https://www.mkyong.com/java/java-how-to-read-a-file-into-a-list/
+
+
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,5 +1,9 @@
+/**
+ * Converts date and time inputted by user into ordinal date format and 24 hour time.
+ */
+
 /*
-    Reference taken from:
+    Adapted from:
     https://stackoverflow.com/questions/6810336/is-there-a-way-in-java-to-convert-an-integer-to-its-ordinal
     http://www.java2s.com/Code/Java/Data-Type/FulllengthofmonthnameSimpleDateFormatMMMM.htm
     https://www.mkyong.com/java/how-to-convert-string-to-date-java/
@@ -12,6 +16,13 @@ import java.util.Date;
 
 
 public class DateTime {
+
+    /**
+     * @param inputDate date inputted by user, if any
+     * @param time time inputted by user, if any
+     * @param actual entire date-time string inputted by user
+     * @return date-time in ordinal date and 24-hour time format
+     */
 
     public static String test(String inputDate, String time, String actual) {
 
@@ -46,6 +57,11 @@ public class DateTime {
         }
         return ans;
     }
+
+    /**
+     * @param i day of the month
+     * @return day of the month as an ordinal number
+     */
 
     public static String ordinal(int i) {
         String[] suffixes = new String[] { "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th" };

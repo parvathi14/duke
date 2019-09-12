@@ -1,6 +1,9 @@
-/*
-    Took reference from: https://www.mkyong.com/java/how-to-append-content-to-file-in-java/
+/**
+ * Saves the list on Duke to a file on the hard disk.
  */
+
+// @@author parvathi14-reused
+// Reused from: https://www.mkyong.com/java/how-to-append-content-to-file-in-java/
 
 import java.io.BufferedWriter;
 import java.io.File;

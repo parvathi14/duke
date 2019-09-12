@@ -1,3 +1,7 @@
+/**
+ * Starts up and runs Duke.
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -12,6 +16,11 @@ public class Duke {
     public boolean isExit;
     private String[] Args;
 
+    /**
+     * Prepares Duke for run: involves loading file from hard disk
+     * @param filePath location of file on hard disk
+     */
+
     public Duke (String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -21,6 +30,10 @@ public class Duke {
             myTasks = new ArrayList<>();
         }
     }
+
+    /**
+     * Runs Duke: Calls classes that read and execute the commands inputted by the user.
+     */
 
     public void run() {
         ui.showWelcome();
